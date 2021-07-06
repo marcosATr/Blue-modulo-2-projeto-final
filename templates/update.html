@@ -1,0 +1,19 @@
+{% if sucesso %}
+      <p>Registro editado com sucesso!</p>
+{% endif %}
+
+      <h2>Editar Registo</h2>
+  
+      <form class="form" method="POST">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" value="{{receita.nome}}" />
+
+        
+          <label for="imagem_url">URL da Imagem:</label>
+          <input type="text" id="imagem_url" name="imagem_url" value="{{ receita.imagem_url }}" />
+        
+          <label for="video_url">URL do video:</label>
+          <input type="text" id="video_url" name="video_url" value="{{ receita.video_url }}" />
+        
+          <input type="submit" class="botao" value="Enviar" />
+        </form>

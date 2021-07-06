@@ -1,0 +1,28 @@
+{% if id_atribuido %}
+
+    <div class="bloco">
+
+        <p>Receita inserido com sucesso!</br>
+            <br>
+           O ID atribuido foi <span class="id_atribuido">{{ id_atribuido}}</span>.<br>
+           <a href="/{{ id_atribuido}}" class ="botao">Visualizar filme</a>
+        </p>
+
+    </div>
+
+    {% else %}
+
+    <div class="bloco">
+        <form class="form" method="POST">
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" required>
+                  
+                <label for="imagem_url">URL da Imagem:</label>
+                <input type="text" id="imagem_url" name="imagem_url" required>
+                <label for="video_url">URL do video:</label>
+                <input type="text" id="video_url" name="video_url" required>
+
+                <input type="submit" class="botao" value="Enviar">
+
+        </form>
+    {% endif %}

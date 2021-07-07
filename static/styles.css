@@ -173,5 +173,10 @@ footer a {
         display: block;
         cursor: pointer;
     }
+    .inputEstilizado {
+        min-width: 300px;
+        float: right;
+        margin-left: 20px;
+    }
 
 }

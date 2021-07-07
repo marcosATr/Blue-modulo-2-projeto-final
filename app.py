@@ -84,7 +84,6 @@ def por_categoria(tipo):
   receitas = Receitas.por_categoria(tipo)
   return render_template('por_categoria.html', receitas=receitas)
 
-#FIM DA LISTA POR TIPO
 
 
 @bp.route('/cadastrar', methods=('GET', 'POST'))

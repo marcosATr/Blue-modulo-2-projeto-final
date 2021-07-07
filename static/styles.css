@@ -14,7 +14,7 @@ body {
 
 }
 .spaced {
-    margin: 20px 5px;
+    margin: 30px 5px;
 }
 header{
     background-color: rgb(207, 59, 14);
@@ -63,6 +63,9 @@ input.botao {
     border: none;
     cursor: pointer;
 }
+textarea {
+    min-height: 250px;
+}
 .tta {
     text-align: center;
 }
@@ -107,9 +110,7 @@ img {
 }
 footer {
     width: 100%;
-    position: fixed;
     background-color: rgb(207, 59, 14);
-    bottom: 0;
     padding: 20px;
 }
 footer a {
@@ -118,4 +119,32 @@ footer a {
     padding-right: 10px;
     font-weight: 300;
     text-decoration: none;
+}
+.sidebar {
+    max-width: 300px;
+    min-width: 180px;
+    background-color: #cf3b0e17;
+    padding: 30px;
+    min-height: 550px;
+}
+.sidebar div {
+    padding: 10px 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.186);
+}
+.sidebar div:last-child {
+    border-bottom: none;    
+}
+.sidebar a {
+    color: #333;
+    text-decoration: none;
+}
+.video {
+    margin: 40px 0;
+}
+.vh-90 {
+    min-height: 90vh;
+}
+.min-card {
+    min-width: 650px;
 }

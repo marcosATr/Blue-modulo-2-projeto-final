@@ -11,22 +11,24 @@
 
 <body>
     {% include 'includes/cabecalho.html' %}
-
-    <div class="container flex justify-between centered column wrap">
-        {% for receita in receitas %}
-        <section class="flex column spaced">
-            <div class="card">
-                <div class="imagem">
-                    <a href="/{{receita.id}}">
-                        <img src="{{receita.imagem_url}}" alt="{{receita.nome}}">
-                    </a>
-                    <a class="texto" href="/{{receita.id}}">
-                        <h1>{{receita.nome}}</h1>
-                    </a>
+    <div class="flex spaced justify-center wrap">
+        {% include 'includes/sidebar.html' %}
+        <div class="flex centered column wrap">
+            {% for receita in receitas %}
+            <section class="flex column spaced">
+                <div class="card">
+                    <div class="imagem">
+                        <a href="/{{receita.id}}">
+                            <img src="{{receita.imagem_url}}" alt="{{receita.nome}}">
+                        </a>
+                        <a class="texto" href="/{{receita.id}}">
+                            <h1>{{receita.nome}}</h1>
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </section>
-        {%endfor%}
+            </section>
+            {%endfor%}
+        </div>
     </div>
 
 

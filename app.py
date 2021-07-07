@@ -35,7 +35,7 @@ class Receitas(db.Model):
 
   @staticmethod
   def todas_receitas():
-    return Receitas.query.order_by(Receitas.id.asc()).all()
+    return Receitas.query.order_by(Receitas.id.desc()).all()
     #return Receitas.query.all()
 
   @staticmethod
@@ -44,7 +44,7 @@ class Receitas(db.Model):
 
   @staticmethod
   def por_categoria(tipo):
-    return Receitas.query.filter_by(tipo=tipo).order_by(Receitas.id.asc()).all()
+    return Receitas.query.filter_by(tipo=tipo).order_by(Receitas.id.desc()).all()
   
   def salvar(self): 
     db.session.add(self) 

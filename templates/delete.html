@@ -11,29 +11,34 @@
     {% include 'includes/cabecalho.html' %}
 
     {% if sucesso %}
-    <div>
-        <p>Receita deletada com sucesso!</p>
-    </div>
-    <div>
-        <a href="/home" >Visualizar todas as Receitas</a>
+    <div class="flex spaced justify-center centered wrap">
+        <div>
+            <p>Receita deletada com sucesso!</p>
+        </div>
+        <div>
+            <a class='botao' href="/home" >Visualizar todas as Receitas</a>
+        </div>
     </div>
 
     {% elif receita %}
-    <div>
-        <h2>Deletar Receita</h2>
-    </div>
-
-    <div>
-        <p>Você tem certeza que deseja remover esta receita?</p>
-    </div>
-    <div>
-        <a href="/{{receita.id}}">Cancelar</a>
-        <a href="/delete/{{receita.id}}/confirmed">Deletar</a>
+    <div class="flex spaced justify-center centered wrap column vh-90">
+        <div class="spaced">
+            <h2>Deletar Receita</h2>
+        </div>
+        <div class="spaced">
+            <p>Você tem certeza que deseja remover esta receita?</p>
+        </div>
+        <div class="spaced">
+            <a class="botao spaced" href="/{{receita.id}}">Cancelar</a>
+            <a class="botao spaced" href="/delete/{{receita.id}}/confirmed">Deletar</a>
+        </div>
     </div>
     {% else %}
-        <div><p>Nenhuma receita encontrada</p></div>
-        <div>
-            <a href="/">Voltar para a lista de receitas</a>
+        <div class="flex spaced justify-center centered wrap">
+            <div><p>Nenhuma receita encontrada</p></div>
+            <div>
+                <a href="/">Voltar para a lista de receitas</a>
+            </div>
         </div>
     {% include 'includes/rodape.html' %}
     {% endif %}

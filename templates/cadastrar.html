@@ -17,14 +17,14 @@
         <div class="formulario flex justify-center centered column spaced vh-90">
             <div>
                 <p class="spaced">Receita cadastrada com id:{{id_atribuido}}</p>
-                <a class="spaced" href="/{{ id_atribuido}}" class="botao">Visualizar Receita</a>
+                <a class="spaced botao" href="/{{ id_atribuido}}" >Visualizar Receita</a>
             </div>
         </div>
         {% else %}
 
         <div class="formulario flex justify-center centered column spaced">
             <h2 class="spaced">Cadastrar Receita</h2>
-            <form class="form spaced" method="POST">
+            <form class="form spaced flex column wrap" method="POST">
                 <div class='spaced'>
                     <label for="nome">Nome:</label>
                     <input class='inputEstilizado' type="text" id="nome" name="nome" required>
@@ -42,16 +42,18 @@
                     <textarea class='inputEstilizado' id="ingredientes" name="ingredientes"
                         placeholder="Digite os ingredientes separados por vírgula."> </textarea>
                 </div>
-                <label for="tipo" class='spaced'>Escolha a categoria:</label>
-                <select id="tipo" name="tipo">
-                    <option value="Bolos e Tortas">Bolos e Tortas</option>
-                    <option value="Carnes">Carnes</option>
-                    <option value="Saladas e Molhos">Saladas e Molhos</option>
-                    <option value="Sopas">Sopas</option>
-                    <option value="Massas">Massas</option>
-                    <option value="Saudável">Saudável</option>
-                    <option value="Outros">Outros</option>
-                </select>
+                <div class="spaced">
+                    <label for="tipo" class='spaced'>Escolha a categoria:</label>
+                    <select id="tipo" name="tipo">
+                        <option value="Bolos e Tortas">Bolos e Tortas</option>
+                        <option value="Carnes">Carnes</option>
+                        <option value="Saladas e Molhos">Saladas e Molhos</option>
+                        <option value="Sopas">Sopas</option>
+                        <option value="Massas">Massas</option>
+                        <option value="Saudável">Saudável</option>
+                        <option value="Outros">Outros</option>
+                    </select>
+                </div>
                 <div class="tta spaced"><input type="submit" class="botao" value="Enviar"></div>
             </form>
         </div>

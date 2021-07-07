@@ -18,7 +18,7 @@
 
 ## Highlights:
 
-**Uma aplicação de Flask para cadastrar Receitas.**
+**Uma aplicação em Flask para cadastrar Receitas.**
 
 ![alt text](https://i.imgur.com/kTfTeH5.png)
 

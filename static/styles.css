@@ -148,3 +148,29 @@ footer a {
 .min-card {
     min-width: 650px;
 }
+.hiddenNav {
+    display: none;
+}
+@media screen and (max-width: 925px) {
+    .sidebar {
+        position: absolute;
+        background: white;
+        height: 100%;
+        top: 0;
+        left: 0;
+        margin: 0;
+        left: -300px;
+        transition: all 0.3s ease-in-out;
+    }
+    .sidebarNotHidden {
+        left: 0;
+        transition: all 0.3s ease-in-out;
+    }
+    header nav {
+        display: none;
+    }
+    .hiddenNav {
+        display: block;
+        cursor: pointer;
+    }
+}

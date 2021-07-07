@@ -178,5 +178,7 @@ footer a {
         float: right;
         margin-left: 20px;
     }
-
+    .video iframe {
+        width: 100%;
+    }
 }

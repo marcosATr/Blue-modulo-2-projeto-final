@@ -5,7 +5,7 @@ app = Flask(__name__)
 bp = Blueprint('app', __name__)
 
 user='nyytdlog'
-password='mcY3kjX1BeubRXgu2nxeYJ7ChvAIly82'
+password='n5P951qOmJv2a0L1Z7n3BtNyiugRGcsQ'
 host='tuffi.db.elephantsql.com'
 database='nyytdlog'
 
@@ -21,12 +21,17 @@ class Receitas(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   nome = db.Column(db.String(50), nullable = False)
   imagem_url = db.Column(db.String(255), nullable = False)
-  video_url = db.Column(db.String(255), nullable = False)
+  video_url = db.Column(db.String(255), nullable = True)
+  ingredientes = db.Column(db.Text, nullable = True)
+  tipo = db.Column(db.String(50), nullable = False)
 
-  def __init__(self, nome, imagem_url, video_url):
+
+  def __init__(self, nome, imagem_url, video_url, ingredientes, tipo):
     self.nome = nome
     self.imagem_url = imagem_url
     self.video_url = video_url
+    self.ingredientes = ingredientes
+    self.tipo = tipo
 
   @staticmethod
   def todas_receitas():
@@ -36,6 +41,10 @@ class Receitas(db.Model):
   @staticmethod
   def exibir_detalhe(id):    
     return Receitas.query.get(id)
+
+  @staticmethod
+  def por_categoria(tipo):
+    return Receitas.query.filter_by(tipo=tipo).order_by(Receitas.id.asc()).all()
   
   def salvar(self): 
     db.session.add(self) 
@@ -45,7 +54,13 @@ class Receitas(db.Model):
     self.nome = new_data.nome
     self.imagem_url = new_data.imagem_url
     self.video_url = new_data.video_url
+    self.ingredientes = new_data.ingredientes
+    self.tipo = new_data.tipo
     self.salvar()
+
+  def delete(self):
+    db.session.delete(self) 
+    db.session.commit()
   
 
 #ROTAS DA HOMEPAGE LISTAM TODAS AS RECEITAS
@@ -62,6 +77,15 @@ def exibir_detalhe(id):
 
   return render_template('exibir_detalhe.html', receita=receita)
 
+##LISTAR POR TIPO
+
+@bp.route('/categoria/<tipo>')
+def por_categoria(tipo):
+  receitas = Receitas.por_categoria(tipo)
+  return render_template('por_categoria.html', receitas=receitas)
+
+#FIM DA LISTA POR TIPO
+
 
 @bp.route('/cadastrar', methods=('GET', 'POST'))
 def cadastrar():
@@ -70,7 +94,7 @@ def cadastrar():
 
   if request.method =='POST':
     form=request.form
-    receitas = Receitas(form['nome'],form['imagem_url'],form['video_url']) 
+    receitas = Receitas(form['nome'],form['imagem_url'],form['video_url'], form['ingredientes'], form['tipo']) 
     receitas.salvar()
     id_atribuido=receitas.id
   return render_template('cadastrar.html', id_atribuido=id_atribuido)
@@ -84,7 +108,7 @@ def update(id):
   if request.method =='POST':
     form=request.form
 
-    new_data= Receitas(form['nome'],form['imagem_url'], form['video_url']) 
+    new_data= Receitas(form['nome'],form['imagem_url'], form['video_url'], form['ingredientes'], form['tipo']) 
 
     receita.update(new_data)
 
@@ -93,7 +117,24 @@ def update(id):
   return render_template('update.html', receita=receita,sucesso=sucesso)
 
 
+@bp.route('/delete/<id>') 
+def delete(id):
+  receita = Receitas.exibir_detalhe(id)
 
+  return render_template('delete.html', receita=receita)
+
+
+@bp.route('/delete/<id>/confirmed') 
+def delete_confirmed(id):
+
+  sucesso = None
+  receita = Receitas.exibir_detalhe(id)
+
+  if receita:
+    receita.delete()
+    sucesso = True
+
+  return render_template('delete.html', sucesso=sucesso)
 
 app.register_blueprint(bp)
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    {% include 'includes/cabecalho.html' %}
+
+    {% if sucesso %}
+    <div>
+        <p>Receita deletada com sucesso!</p>
+    </div>
+    <div>
+        <a href="/home" >Visualizar todas as Receitas</a>
+    </div>
+
+    {% elif receita %}
+    <div>
+        <h2>Deletar Receita</h2>
+    </div>
+
+    <div>
+        <p>Você tem certeza que deseja remover esta receita?</p>
+    </div>
+    <div>
+        <a href="/{{receita.id}}">Cancelar</a>
+        <a href="/delete/{{receita.id}}/confirmed">Deletar</a>
+    </div>
+    {% else %}
+        <div><p>Nenhuma receita encontrada</p></div>
+        <div>
+            <a href="/">Voltar para a lista de receitas</a>
+        </div>
+    {% include 'includes/rodape.html' %}
+    {% endif %}
+</body>
+</html>

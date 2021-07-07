@@ -1,28 +1,61 @@
-{% if id_atribuido %}
+<!DOCTYPE html>
+<html lang="en">
 
-    <div class="bloco">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
 
-        <p>Receita inserido com sucesso!</br>
-            <br>
-           O ID atribuido foi <span class="id_atribuido">{{ id_atribuido}}</span>.<br>
-           <a href="/{{ id_atribuido}}" class ="botao">Visualizar filme</a>
-        </p>
+<body>
+    {% include '/includes/cabecalho.html' %}
 
+    <div class="container">
+        {% if id_atribuido %}
+        <p>Receita cadastrada com id:{{id_atribuido}}</p>
+        <a href="/{{ id_atribuido}}" class="botao">Visualizar Receita</a>
+        {% else %}
+
+        <div class="formulario flex justify-center centered column spaced">
+            <h2 class="spaced">Cadastrar Receita</h2>
+            <form class="form spaced" method="POST">
+                <div class='spaced'>
+                    <label for="nome">Nome:</label>
+                    <input class='inputEstilizado' type="text" id="nome" name="nome" required>
+                </div>
+                <div class='spaced'>
+                    <label for="imagem_url">URL da Imagem:</label>
+                    <input class='inputEstilizado' type="text" id="imagem_url" name="imagem_url" required>
+                </div>
+                <div class='spaced'>
+                    <label for="video_url">URL do video:</label>
+                    <input class='inputEstilizado' type="text" id="video_url" name="video_url" required>
+                </div>
+                <div class='spaced'>
+                    <label for="ingredientes">Ingredientes:</label>
+                    <textarea class='inputEstilizado' id="ingredientes" name="ingredientes"
+                        placeholder="Digite os ingredientes separados por vírgula."> </textarea>
+                </div>
+                <label for="tipo" class='spaced'>Escolha a categoria:</label>
+                <select id="tipo" name="tipo">
+                    <option value="Bolos e Tortas">Bolos e Tortas</option>
+                    <option value="Carnes">Carnes</option>
+                    <option value="Saladas e Molhos">Saladas e Molhos</option>
+                    <option value="Sopas">Sopas</option>
+                    <option value="Massas">Massas</option>
+                    <option value="Saudável">Saudável</option>
+                    <option value="Outros">Outros</option>
+                </select>
+                <div class="tta spaced"><input type="submit" class="botao" value="Enviar"></div>
+            </form>
+        </div>
     </div>
-
-    {% else %}
-
-    <div class="bloco">
-        <form class="form" method="POST">
-                <label for="nome">Nome:</label>
-                <input type="text" id="nome" name="nome" required>
-                  
-                <label for="imagem_url">URL da Imagem:</label>
-                <input type="text" id="imagem_url" name="imagem_url" required>
-                <label for="video_url">URL do video:</label>
-                <input type="text" id="video_url" name="video_url" required>
-
-                <input type="submit" class="botao" value="Enviar">
-
-        </form>
     {% endif %}
+
+    {% include '/includes/rodape.html' %}
+
+</body>
+
+</html>

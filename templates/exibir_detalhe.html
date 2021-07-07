@@ -1,3 +1,40 @@
-{{receita.nome}}
-{{receita.imagem_url}}
-{{receita.video_url}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exibir Detalhes</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    {%if receita.ingredientes %}
+    <script src='static/listar_ingredientes.js' defer></script> {% endif %}
+</head>
+
+<body>
+    {% include '/includes/cabecalho.html' %}
+
+    <div class="flex justify-between centered column">
+        <div class="spaced">
+            <h1>{{receita.nome}}</h1>
+            <p>Categoria: <a href='/categoria/{{receita.tipo}}'>{{receita.tipo}}</a></p>
+        </div>
+        <div class="video spaced">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/{{receita.video_url}}"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+        <div class="ingredients">
+            {{receita.ingredientes}}
+        </div>
+        <div class="spaced row">
+            <a class='botao' href='/delete/{{receita.id}}'>Delete</a>
+            <a class='botao' href='/update/{{receita.id}}'>Atualizar</a>
+        </div>
+    </div>
+
+    {% include '/includes/rodape.html' %}
+</body>
+
+</html>

@@ -21,20 +21,20 @@
                 <form class="form spaced flex column wrap" method="POST">
                     <div class='spaced'>
                         <label for="nome">Nome:</label>
-                        <input class='inputEstilizado' type="text" id="nome" name="nome" required>
+                        <input class='inputEstilizado' type="text" id="nome" name="nome" value='{{receita.nome}}' required>
                     </div>
                     <div class='spaced'>
                         <label for="imagem_url">URL da Imagem:</label>
-                        <input class='inputEstilizado' type="text" id="imagem_url" name="imagem_url" required>
+                        <input class='inputEstilizado' type="text" id="imagem_url" name="imagem_url" value='{{receita.imagem_url}}' required>
                     </div>
                     <div class='spaced'>
                         <label for="video_url">URL do video:</label>
-                        <input class='inputEstilizado' placeholder='Utilize apenas o TOKEN. Ex: "jBzwzrDvZ18"' type="text" id="video_url" name="video_url" required>
+                        <input class='inputEstilizado' placeholder='Utilize apenas o TOKEN. Ex: "jBzwzrDvZ18"' type="text" id="video_url" name="video_url" value='{{receita.video_url}}' required>
                     </div>
                     <div class='spaced'>
                         <label for="ingredientes">Ingredientes:</label>
                         <textarea class='inputEstilizado' id="ingredientes" name="ingredientes"
-                            placeholder="Digite os ingredientes separados por vírgula."> </textarea>
+                            placeholder="Digite os ingredientes separados por vírgula.">{{receita.ingredientes}}</textarea>
                     </div>
                     <label for="tipo" class='spaced'>Escolha a categoria:</label>
                     <select id="tipo" name="tipo">

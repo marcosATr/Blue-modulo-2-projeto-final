@@ -151,6 +151,10 @@ footer a {
 .hiddenNav {
     display: none;
 }
+.ingredients li {
+    font-weight: 300;
+    font-size: 1.1rem;
+}
 @media screen and (max-width: 925px) {
     .sidebar {
         position: absolute;

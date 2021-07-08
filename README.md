@@ -14,7 +14,7 @@
 
 - [Gustavo Molina](https://www.linkedin.com/in/gustavo-molina-a2798418)
 - [Henrique Mendes](https://www.linkedin.com/in/henriquegmendes)
-- [Matheus Morett](https://github.com/violigon)
+- [Matheus Morett](https://github.com/matheusmorett2)
 
 ## Highlights:
 
